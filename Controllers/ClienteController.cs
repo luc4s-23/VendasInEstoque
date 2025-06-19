@@ -25,7 +25,8 @@ namespace VendasInEstoque.Controllers
             _context.SaveChanges();
             return Ok(cliente);
         }
-        [HttpGet("{id}")]
+
+        [HttpGet("BuscarCliente/{id}")]
         public IActionResult GetById(int id)
         {
             var cliente = _context.Clientes.Find(id);
@@ -33,7 +34,8 @@ namespace VendasInEstoque.Controllers
                 return NotFound();
             return Ok(cliente);
         }
-        [HttpDelete("{id}")]
+
+        [HttpDelete("ApagarCliente/{id}")]
         public IActionResult Delete(int id)
         {
             var cliente = _context.Clientes.Find(id);
@@ -44,6 +46,7 @@ namespace VendasInEstoque.Controllers
             _context.SaveChanges();
             return NoContent();
         }
+
         [HttpPut("AtualizarCliente/{id}")]
         public IActionResult UpdateCliente(int id, [FromBody] Cliente cliente)
         {
